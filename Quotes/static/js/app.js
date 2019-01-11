@@ -26,6 +26,7 @@ function  datalist(weatherList){
 
 // Select the submit button
 var submit = d3.select("#filter-btn");
+var clrbtn = d3.select("#Clr-btn");
 
 submit.on("click", function() {
 
@@ -34,18 +35,28 @@ submit.on("click", function() {
 
   // Select the input element and get the raw HTML node
   var inputElement = d3.select("#datetime");
-  var inputCity = d3.select("#city");
+  //var inputCity = d3.select("#city");
 
   // Get the value property of the input element
   var inputValue = inputElement.property("value");
-  var inputValue2 = inputCity.property("value");
+  //var inputValue2 = inputCity.property("value");
   
 
   console.log(inputValue);
-  console.log(tableData );
+ //console.log(tableData );
 
-  var filteredData = tableData.filter(tableData =>((tableData.datetime === inputValue)&&(tableData.city === inputValue2))); 
+ // var filteredData = tableData.filter(tableData =>((tableData.year === inputValue)&&(tableData.city === inputValue2))); 
+  var filteredData = tableData.filter(tableData =>((tableData.year === inputValue))); 
   
   console.log(filteredData);
   datalist(filteredData);
 });
+
+clrbtn.on("click", function() {
+
+    // Prevent the page from refreshing
+    d3.event.preventDefault();
+  
+    datalist(tableData);
+
+  });
