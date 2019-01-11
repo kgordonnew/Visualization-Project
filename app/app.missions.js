@@ -16,5 +16,15 @@ let allMissions = d3.json("https://api.spacexdata.com/v3/missions")
       .text((data)=>{
       return data.description
     })
+      dataBinding.append("p")
+      .text((data)=>{
+      return data.website
+    })
+
+    dataBinding.append("p")
+      .text((data)=>{
+      return data.twitter
+    })
+
 
   });
